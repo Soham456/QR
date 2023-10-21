@@ -9,7 +9,7 @@ export default function History() {
     // Retrieve the history data from AsyncStorage
     const getHistoryData = async () => {
       try {
-        const history = await AsyncStorage.getItem('scannedHistory');
+        const history = await AsyncStorage.getItem('scanHistory');
         if (history) {
           setHistoryData(JSON.parse(history));
         }

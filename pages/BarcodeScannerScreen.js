@@ -27,16 +27,14 @@ export default function BarcodeScannerScreen() {
     try {
       if (data) {
         // Retrieve the existing history or create an empty array
-        const existingHistory = await AsyncStorage.getItem('scannedHistory');
+        const existingHistory = await AsyncStorage.getItem('scanHistory');
         const history = existingHistory ? JSON.parse(existingHistory) : [];
   
         // Append the new QR code to the history
         history.push(data);
   
         // Save the updated history back to AsyncStorage
-        await AsyncStorage.setItem('scannedHistory', JSON.stringify(history));
-  
-        navigation.navigate('DisplayData');
+        await AsyncStorage.setItem('scanHistory', JSON.stringify(history));
       } else {
         console.error('Scanned data is null or undefined.');
       }
@@ -59,7 +57,7 @@ export default function BarcodeScannerScreen() {
         <Text style={{ margin: 10 }}>No access to camera</Text>
         <Button title={'Allow Camera'} onPress={() => askForCameraPermission()} />
       </View>)
-  }
+  } 
 
   // Return the View
   return (
